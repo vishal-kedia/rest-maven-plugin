@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rest-template  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+               xmlns='https://github.com/vishal-kedia/rest-maven-plugin/v1.0'
+               xsi:schemaLocation='https://github.com/vishal-kedia/rest-maven-plugin/v1.0 ../rest-template.xsd'>
+
+    <rest-service name="LoginService">
+    	<api name="login" http-method="GET">
+    	
+    	</api>
+    </rest-service>
+
+</rest-template>

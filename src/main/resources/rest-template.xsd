@@ -25,7 +25,7 @@
     </xs:complexType>
     <xs:complexType name="ApiConfig">
     	<xs:sequence>
-            <xs:element name="http-request-param" type="rest-template:HttpParam" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="http-request-param" type="rest-template:HttpParam" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="http-request-body" type="rest-template:HttpBody" minOccurs="0" maxOccurs="1" />
             <xs:element name="http-response-body" type="rest-template:HttpBody" minOccurs="0" maxOccurs="1" />
         </xs:sequence>

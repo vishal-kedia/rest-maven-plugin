@@ -43,6 +43,39 @@
 
   <build>
     <plugins>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <version>3.5.1</version>
+			    <configuration>
+			        <source>1.8</source>
+			        <target>1.8</target>
+			    </configuration>
+			</plugin>
+			<plugin>
+			  <groupId>org.codehaus.mojo</groupId>
+			  <artifactId>xml-maven-plugin</artifactId>
+			  <configuration>
+			    <transformationSets>
+			      <transformationSet>
+			        <dir>src/main/resources/META-INF/schema/config</dir>
+			        <stylesheet>../xsl/remove-1.1-elements.xsl</stylesheet>
+			        <outputDir>${project.build.directory}/generated-resources/xml/xslt/config</outputDir>
+			      </transformationSet>
+			    </transformationSets>
+			  </configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.jvnet.jaxb2.maven2</groupId>
+			    <artifactId>maven-jaxb2-plugin</artifactId>
+			    <executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
@@ -74,35 +107,6 @@
       <build>
 
         <plugins>
-			<plugin>
-			  <groupId>org.codehaus.mojo</groupId>
-			  <artifactId>xml-maven-plugin</artifactId>
-			  <configuration>
-			    <transformationSets>
-			      <transformationSet>
-			        <dir>src/main/resources/META-INF/schema/config</dir>
-			        <stylesheet>../xsl/remove-1.1-elements.xsl</stylesheet>
-			        <outputDir>${project.build.directory}/generated-resources/xml/xslt/config</outputDir>
-			      </transformationSet>
-			    </transformationSets>
-			  </configuration>
-			</plugin>
-			<plugin>
-			    <groupId>org.jvnet.jaxb2.maven2</groupId>
-			    <artifactId>maven-jaxb2-plugin</artifactId>
-			    <configuration>
-			        <specVersion>2.2</specVersion>
-			        <schemaDirectory>${project.build.directory}/generated-resources/xml/xslt</schemaDirectory>
-			        <schemaIncludes>
-			            <include>**/*.xsd</include>
-			        </schemaIncludes>
-			        <bindingIncludes>
-			            <include>**/*.xjb</include>
-			        </bindingIncludes>
-			        <strict>true</strict>
-			        <verbose>false</verbose>
-			    </configuration>
-			</plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-invoker-plugin</artifactId>
